@@ -20,3 +20,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-graphql_matchers'
 end
+
+group :test do
+  gem 'codeclimate-test-reporter', platform: :mri, require: false
+end
