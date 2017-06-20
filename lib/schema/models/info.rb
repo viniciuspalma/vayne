@@ -1,8 +1,8 @@
 class Info < Dry::Struct
   constructor_type :schema
 
-  attribute :difficulty, Types::Int
-  attribute :attack,     Types::Int
-  attribute :defense,    Types::Int
-  attribute :magic,      Types::Int
+  attribute :difficulty, Types::Strict::Int
+  attribute :attack,     Types::Strict::Int
+  attribute :defense,    Types::Strict::Int
+  attribute :magic,      Types::Strict::Int
 end
