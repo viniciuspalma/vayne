@@ -14,3 +14,13 @@ gem 'dry-struct'
 gem 'graphql'
 gem 'httparty'
 gem 'multi_json'
+
+group :development, :test do
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'rspec-graphql_matchers'
+end
+
+group :test do
+  gem 'codeclimate-test-reporter', platform: :mri, require: false
+end

@@ -1,7 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    codeclimate-test-reporter (1.0.8)
+      simplecov (<= 0.13)
     concurrent-ruby (1.0.5)
+    diff-lcs (1.3)
+    docile (1.1.5)
     dotenv (2.2.1)
     dry-configurable (0.7.0)
       concurrent-ruby (~> 1.0)
@@ -34,6 +38,7 @@ GEM
       multi_xml (>= 0.5.2)
     ice_nine (0.11.2)
     inflecto (0.0.2)
+    json (2.1.0)
     multi_json (1.12.1)
     multi_xml (0.6.0)
     mustermann (1.0.0)
@@ -41,6 +46,28 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rspec (3.6.0)
+      rspec-core (~> 3.6.0)
+      rspec-expectations (~> 3.6.0)
+      rspec-mocks (~> 3.6.0)
+    rspec-core (3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-expectations (3.6.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.6.0)
+    rspec-graphql_matchers (0.5)
+      graphql (>= 0.9, < 2)
+    rspec-mocks (3.6.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.6.0)
+    rspec-support (3.6.0)
+    simplecov (0.13.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.1)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -53,6 +80,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
+  codeclimate-test-reporter
   dotenv
   dry-struct
   dry-types
@@ -60,6 +88,9 @@ DEPENDENCIES
   httparty
   multi_json
   puma
+  rack-test
+  rspec
+  rspec-graphql_matchers
   sinatra
 
 RUBY VERSION
