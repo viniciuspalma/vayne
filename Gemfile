@@ -14,3 +14,9 @@ gem 'dry-struct'
 gem 'graphql'
 gem 'httparty'
 gem 'multi_json'
+
+group :development, :test do
+  gem 'rack-test'
+  gem 'rspec'
+  gem 'rspec-graphql_matchers'
+end
