@@ -7,6 +7,7 @@ describe Champion do
         Champion.new(
           id: 1,
           name: 'foo',
+          title: 'foo bar',
           lore: 'bar'
         )
       end
@@ -18,6 +19,10 @@ describe Champion do
 
         it 'returns the name of new champion created' do
           expect(champion.name).to eq('foo')
+        end
+
+        it 'returns the title of new champion created' do
+          expect(champion.title).to eq('foo bar')
         end
 
         it 'returns the lore of new champion created' do
