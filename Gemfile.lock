@@ -73,6 +73,7 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sinatra-cross_origin (0.4.0)
     tilt (2.0.7)
 
 PLATFORMS
@@ -92,6 +93,7 @@ DEPENDENCIES
   rspec
   rspec-graphql_matchers
   sinatra
+  sinatra-cross_origin
 
 RUBY VERSION
    ruby 2.4.1p111
