@@ -13,6 +13,12 @@ describe ChampionType do
     end
   end
 
+  describe 'title field' do
+    it 'returns String type' do
+      expect(described_class.fields['title'].type.to_s).to eq('String')
+    end
+  end
+
   describe 'lore field' do
     it 'returns String type' do
       expect(described_class.fields['lore'].type.to_s).to eq('String')

@@ -9,6 +9,7 @@ class ChampionsRepo
     Champion.new(
       id: champion['id'],
       name: champion['name'],
+      title: champion['title'],
       lore: champion['lore'],
       info: {
         difficulty: champion['info']['difficulty'],
