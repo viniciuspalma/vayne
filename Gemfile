@@ -6,6 +6,7 @@ gem 'bundler'
 gem 'dotenv'
 
 gem 'sinatra'
+gem 'sinatra-cross_origin'
 gem 'puma'
 
 gem 'dry-types'
