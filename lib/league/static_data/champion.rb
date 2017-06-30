@@ -5,8 +5,10 @@ module League
         query.merge!(locale: 'en_US',
           tags: ['image', 'info', 'lore', 'stats'])
 
-        self.class.get("/lol/static-data/v3/champions/#{id}", options)
-          .parsed_response
+        perform_request(
+          "/lol/static-data/v3/champions/#{id}",
+          "static_data/champions/#{id}"
+        )
       end
     end
   end
