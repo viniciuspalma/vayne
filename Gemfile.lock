@@ -48,6 +48,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    redis (3.3.3)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -90,6 +91,7 @@ DEPENDENCIES
   multi_json
   puma
   rack-test
+  redis (~> 3.2)
   rspec
   rspec-graphql_matchers
   sinatra
