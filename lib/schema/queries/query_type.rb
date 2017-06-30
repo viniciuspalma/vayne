@@ -6,8 +6,15 @@ QueryType = GraphQL::ObjectType.define do
     type ChampionType
     argument :id, !types.ID
     description "Find an champion by its ID"
-    resolve ->(obj, args, ctx) {
+    resolve -> (_, args, _) {
       ChampionsRepo.find(id: args['id'])
+    }
+  end
+
+  field :champions, types[ChampionType] do
+    description "Find all champions"
+    resolve -> (_, _, _) {
+      ChampionsRepo.all()
     }
   end
 end
