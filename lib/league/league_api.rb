@@ -16,6 +16,23 @@ module League
 
     attr_reader :query
 
+    def perform_request(endpoint, request_id)
+      cached_request = store.get(request_id)
+
+      if cached_request
+        return json_parse_request(cached_request)
+      end
+
+      response = self.class.get(endpoint, options)
+      store.setex(request_id, 1440, json_parse_request(response).to_json)
+
+      json_parse_request(response)
+    end
+
+    def json_parse_request(response)
+      JSON.parse(response, symbolize_names: true)
+    end
+
     def options
       default_options
         .merge(query: @query)
@@ -23,13 +40,19 @@ module League
     end
 
     def default_options
-      {}
+      {
+        format: :plain
+      }
     end
 
     def default_query
       {
         api_key: ENV['RIOT_API_KEY']
       }
+    end
+
+    def store
+      @store ||= Redis.new(url: ENV['REDIS_URL'])
     end
   end
 end

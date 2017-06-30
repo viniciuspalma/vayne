@@ -8,6 +8,7 @@ gem 'dotenv'
 gem 'sinatra'
 gem 'sinatra-cross_origin'
 gem 'puma'
+gem 'redis', '~>3.2'
 
 gem 'dry-types'
 gem 'dry-struct'
