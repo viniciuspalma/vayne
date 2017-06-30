@@ -1,12 +1,8 @@
 class ChampionsRepo
-  def self.all
-    League::Champions.new().champions_data
-  end
-
   def self.find(id:)
-    champion = League::Champions.new().champion_data(id: id)
+    champion = League::StaticData::Champion.new.call(id: id)
 
-    Champion.new(
+    Champion[
       id: champion['id'],
       name: champion['name'],
       title: champion['title'],
@@ -48,6 +44,6 @@ class ChampionsRepo
         x: champion['image']['x'],
         y: champion['image']['y']
       }
-    )
+    ]
   end
 end

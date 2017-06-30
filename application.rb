@@ -3,7 +3,7 @@ require 'bundler'
 Bundler.require
 $: << File.expand_path('../', __FILE__)
 
-require 'lib/league/champions'
+require 'lib/league/league'
 require 'lib/schema/schema'
 
 Dotenv.load
