@@ -4,7 +4,6 @@ module League
       def call()
         query.merge!(
           locale: 'en_US',
-          tags: ['image', 'info', 'lore', 'stats', 'skins'],
           dataById: 'true'
         )
 
