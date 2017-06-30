@@ -8,4 +8,5 @@ class Champion < Dry::Struct
   attribute :info,  Info
   attribute :stats, Stats
   attribute :image, Image
+  attribute :skins, Types::Strict::Array.member(Skin)
 end
