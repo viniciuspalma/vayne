@@ -42,4 +42,10 @@ describe ChampionType do
       expect(described_class.fields['image'].type.to_s).to eq('Image')
     end
   end
+
+  describe 'skins field' do
+    it 'returns SkinType type' do
+      expect(described_class.fields['skins'].type.to_s).to eq('[Skins of Champion]')
+    end
+  end
 end

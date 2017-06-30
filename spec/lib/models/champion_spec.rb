@@ -73,5 +73,16 @@ describe Champion do
         end
       end
     end
+
+    context 'when passed skin as parameter' do
+      let(:skin) { Skin.new(name: 'foo') }
+      let(:champion) { Champion.new(skins: [skin]) }
+
+      describe 'create a new champion' do
+        it 'returns the skin passed as parameter' do
+          expect(champion.skins).to eq([skin])
+        end
+      end
+    end
   end
 end
