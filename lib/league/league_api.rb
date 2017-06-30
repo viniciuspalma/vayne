@@ -17,8 +17,10 @@ module League
     attr_reader :query
 
     def perform_request(endpoint, request_id)
-      if result = store.get(request_id)
-        return json_parse_request(result)
+      cached_request = store.get(request_id)
+
+      if cached_request
+        return json_parse_request(cached_request)
       end
 
       response = self.class.get(endpoint, options)
