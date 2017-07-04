@@ -8,8 +8,8 @@ module League
         )
 
         perform_request(
-          "/lol/static-data/v3/champions",
-          "static_data/champions/all"
+          '/lol/static-data/v3/champions',
+          'static_data/champions/all'
         )
       end
     end
