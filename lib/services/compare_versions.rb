@@ -1,0 +1,3 @@
+require_relative 'compare_versions/compare_attributes'
+require_relative 'compare_versions/investigate_evidences'
+require_relative 'compare_versions/judge'
