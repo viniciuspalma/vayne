@@ -12,34 +12,34 @@ module CompareVersions
       return :no_changes if all_no_changes?
       return :buff if all_buff?
       return :nerf if all_nerf?
+
+      if evidences_size(:buff) > evidences_size(:nerf)
+        return :buff
+      elsif evidences_size(:nerf) > evidences_size(:buff)
+        return :nerf
+      end
+
+      return :unknown
     end
 
     private
 
     attr_accessor :evidences
 
-    def buff?(evidence)
-      evidence[:status] == :buff
-    end
-
-    def nerf?(evidence)
-      evidence[:status] == :nerf
-    end
-
-    def no_changes?
-      evidence[:status] == :no_changes
+    def status_evidence?(evidence, status)
+      evidence[:status] == status
     end
 
     def all_buff?
-      evidences.all? { |evidence| buff?(evidence) }
+      evidences.all? { |evidence| status_evidence?(evidence, :buff) }
     end
 
     def all_nerf?
-      evidences.all? { |evidence| nerf?(evidence) }
+      evidences.all? { |evidence| status_evidence?(evidence, :nerf) }
     end
 
     def all_no_changes?
-      evidences.all? { |evidence| no_changes?(evidence) }
+      evidences.all? { |evidence| status_evidence?(evidence, :no_changes) }
     end
 
     def evidences_size(status)
