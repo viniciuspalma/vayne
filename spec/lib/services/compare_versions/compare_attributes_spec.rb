@@ -60,7 +60,7 @@ describe CompareVersions::CompareAttributes do
         )
       end
 
-      it 'returns attributes buffed' do
+      it 'returns attributes and correct status' do
         expect(subject.compare(object_compared)).to(
           eq([
             { attribute: :hp, status: :buff },

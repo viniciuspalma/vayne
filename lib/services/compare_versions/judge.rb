@@ -25,7 +25,7 @@ module CompareVersions
     end
 
     def attributes
-      newer.to_hash.keys
+      newer.to_h.keys
     end
   end
 end
