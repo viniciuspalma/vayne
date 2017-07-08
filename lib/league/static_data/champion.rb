@@ -5,7 +5,7 @@ module League
         query.merge!(
           locale: 'en_US',
           version: version,
-          tags: ['image', 'info', 'lore', 'stats', 'skins']
+          tags: ['image', 'info', 'lore', 'stats', 'skins', 'spells']
         )
 
         perform_request(

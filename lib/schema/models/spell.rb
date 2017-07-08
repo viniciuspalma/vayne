@@ -7,8 +7,8 @@ class Spell < Dry::Struct
   attribute :maxrank,          Types::Strict::Int
   attribute :cost,             Types::Strict::Array.member(Types::Strict::Int)
   attribute :range,            Types::Strict::Array.member(Types::Strict::Int)
-  attribute :effects,          Types::Strict::Array.member(Types::Strict::Int)
-  attribute :cooldown,         Types::Strict::Array.member(Types::Strict::Int)
+  attribute :effect,           Types::Strict::Array
+  attribute :cooldown,         Types::Strict::Array.member(Types::Strict::Float)
   attribute :vars,             Types::Strict::Array.member(SpellVariable)
   attribute :image,            Image
 end
