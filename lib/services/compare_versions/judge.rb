@@ -19,22 +19,18 @@ module CompareVersions
 
     def evidences
       [
-        compare_attributes,
+        compare_stats,
         compare_spells
       ].flatten
     end
 
-    def compare_attributes
-      CompareAttributes.new(attributes: keys, object: newer)
-        .compare(older)
+    def compare_stats
+      CompareAttributes.new(attributes: newer.stats.to_h.keys, object: newer.stats)
+        .compare(older.stats)
     end
 
     def compare_spells
       CompareSpells.(new_spells: newer.spells, old_spells: older.spells)
-    end
-
-    def keys
-      newer.to_h.keys - [:spells]
     end
   end
 end

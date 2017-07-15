@@ -10,4 +10,8 @@ class Champion < Dry::Struct
   attribute :image,  Image
   attribute :skins,  Types::Strict::Array.member(Skin)
   attribute :spells, Types::Strict::Array.member(Spell)
+
+  def versions
+    ChampionVersionsFactory.(champion_id: id)
+  end
 end

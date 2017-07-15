@@ -4,6 +4,7 @@ Bundler.require
 $: << File.expand_path('../', __FILE__)
 
 require 'lib/services/compare_versions'
+require 'lib/services/champion_versions_factory'
 require 'lib/league/league'
 require 'lib/schema/schema'
 
