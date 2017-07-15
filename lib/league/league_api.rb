@@ -17,15 +17,12 @@ module League
     attr_reader :query
 
     def perform_request(endpoint, request_id)
-      cached_request = store.get(request_id)
-
-      if cached_request
-        return json_parse_request(cached_request)
-      end
+      key = "#{ENV['RIOT_API_KEY']}/#{request_id}"
+      return json_parse_request(cached_request(key)) if cached_request(key)
 
       response = self.class.get(endpoint, options)
-      store.setex(request_id, 1440, json_parse_request(response).to_json)
 
+      store_request(key, response) if response.code === 200
       json_parse_request(response)
     end
 
@@ -49,6 +46,14 @@ module League
       {
         api_key: ENV['RIOT_API_KEY']
       }
+    end
+
+    def cached_request(key)
+      store.get(key)
+    end
+
+    def store_request(key, response)
+      store.setex(key, 1440, json_parse_request(response).to_json)
     end
 
     def store

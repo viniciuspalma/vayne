@@ -10,22 +10,27 @@ module CompareVersions
     end
 
     def adjudicate
-      InvestigateEvidences.(evidences: compare_attributes)
+      InvestigateEvidences.(evidences: evidences)
     end
 
     private
 
     attr_accessor :newer, :older
 
-    def compare_attributes
-      CompareAttributes.new(
-        attributes: attributes,
-        object: newer
-      ).compare(older)
+    def evidences
+      [
+        compare_stats,
+        compare_spells
+      ].flatten
     end
 
-    def attributes
-      newer.to_hash.keys
+    def compare_stats
+      CompareAttributes.new(attributes: newer.stats.to_h.keys, object: newer.stats)
+        .compare(older.stats)
+    end
+
+    def compare_spells
+      CompareSpells.(new_spells: newer.spells, old_spells: older.spells)
     end
   end
 end

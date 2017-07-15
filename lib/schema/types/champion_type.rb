@@ -9,4 +9,5 @@ ChampionType = GraphQL::ObjectType.define do
   field :info,  -> { InfoType }
   field :stats, -> { StatsType }
   field :image, -> { ImageType }
+  field :versions, -> { VersionType.to_list_type }
 end

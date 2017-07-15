@@ -2,7 +2,9 @@
 [![CodeClimate](https://codeclimate.com/github/viniciuspalma/vayne.png)](https://codeclimate.com/github/viniciuspalma/vayne)
 
 # Vayne
-A GraphQL wrapper to League of Legends Champions's endpoint
+A GraphQL wrapper to League of Legends Champions's endpoint, and with some [black
+magics](http://images.wikia.com/leagueoflegends/images/8/86/Vayne.move4.ogg)
+compare champion's versions to return the version status, if was buffed or nerfed.
 
 ## Install
 
@@ -34,44 +36,50 @@ bundle exec rackup
 ```graphql
 {
   champion(id: 67) {
-    name,
-    lore,
+    id
+    name
+    title
+    lore
     info {
-      difficulty,
-      attack,
-      defense,
+      difficulty
+      attack
+      defense
       magic
-    },
+    }
     stats {
-      armorperlevel,
-      hpperlevel,
-      attackdamage,
-      mpperlevel,
-      attackspeedoffset,
-      armor,
-      hp,
-      hpregenperlevel,
-      spellblock,
-      attackrange,
-      movespeed,
-      attackdamageperlevel,
-      mpregenperlevel,
-      mp,
-      spellblockperlevel,
-      crit,
-      mpregen,
-      attackspeedperlevel,
-      hpregen,
+      armorperlevel
+      hpperlevel
+      attackdamage
+      mpperlevel
+      attackspeedoffset
+      armor
+      hp
+      hpregenperlevel
+      spellblock
+      attackrange
+      movespeed
+      attackdamageperlevel
+      mpregenperlevel
+      mp
+      spellblockperlevel
+      crit
+      mpregen
+      attackspeedperlevel
+      hpregen
       critperlevel
-    },
+    }
     image {
-      full,
-      group,
-      sprite,
-      h,
-      w,
-      x,
+      full
+      group
+      sprite
+      h
+      w
+      x
       y
+    },
+    versions {
+      number
+      status
     }
   }
 }
@@ -83,8 +91,10 @@ bundle exec rackup
 {
   "data": {
     "champion": {
+      "id": "67",
       "name": "Vayne",
-      "lore": "The world is not always as civilized as people might think. There are still those who would follow the blackest paths of magic and become corrupted by the darker powers that flow through Runeterra. Shauna Vayne knows this fact well.<br><br>As a young privileged girl in the heart of Demacia's elite, her father tried to convince her of the constabulary's ever-vigilant eye. Young and naive, she truly believed that her world was one of perfect safety, until one night, when a twisted witch took interest in her father. The malevolent woman overcame her father's conciliar guard, then tortured her family before murdering them. The young Shauna escaped only by hiding herself and then fleeing once the hag had departed, plagued by the screams of her loved ones as she ran. A burning hatred was born in her that day, one that could never be denied.<br><br>Vayne was able to take care of herself using her father's money, and she began to train as soon as an instructor would have her as a student. By the time she was a fully grown woman, she had become a grim warrior. However, the fields of battle were not to be her home.<br><br>Demacia needed a protector, one who hunted those lost to the darkness. Shauna used her family's contacts to become the first Night Hunter, and now her prowess is legendary. It is said that those who practice the black arts quake when they hear that the Night Hunter is on the prowl.<br><br>Not all shadows are to be feared. At least, if Vayne has her way.",
+      "title": "the Night Hunter",
+      "lore": "The world is not always as civilized as people might think...",
       "info": {
         "difficulty": 8,
         "attack": 10,
@@ -121,7 +131,25 @@ bundle exec rackup
         "w": 48,
         "x": 384,
         "y": 96
-      }
+      },
+      "versions": [
+        {
+          "number": "7.14.1",
+          "status": "nerf"
+        },
+        {
+          "number": "7.13.1",
+          "status": "no_changes"
+        },
+        {
+          "number": "7.12.1",
+          "status": "no_changes"
+        },
+        {
+          "number": "7.11.1",
+          "status": "no_changes"
+        }
+      ]
     }
   }
 }
