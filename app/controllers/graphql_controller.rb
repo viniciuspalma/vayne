@@ -3,7 +3,13 @@ class GraphqlController < ApplicationController
     variables = ensure_hash(params[:variables])
     query = params[:query]
 
-    render json: VayneSchema.execute(query, variables: variables, context: {})
+    result = if request.media_type == 'application/graphql'
+      VayneSchema.execute(request.raw_post, context: {})
+    else
+      VayneSchema.execute(query, variables: variables, context: {})
+    end
+
+    render json: result
   end
 
   private
