@@ -8,8 +8,9 @@ end
 gem 'rails', '~> 5.1.2'
 
 gem 'pg'
-
 gem 'puma', '~> 3.7'
+
+gem 'httparty'
 gem 'graphql'
 
 group :development, :test do
