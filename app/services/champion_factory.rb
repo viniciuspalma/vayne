@@ -14,7 +14,8 @@ class ChampionFactory
 
       champion.skins = skins
       champion.spells = spells
-      champion.images << image
+      champion.image = image
+      champion.stats = stats
 
       champion.save
     end
@@ -54,6 +55,10 @@ class ChampionFactory
     end
   end
 
+  def stats
+    Stats.new(stats_attributes)
+  end
+
   def image_attributes
     {
       full: champion[:image][:full],
@@ -84,6 +89,31 @@ class ChampionFactory
       cost: spell[:cost],
       range: spell[:range],
       cooldown: spell[:cooldown]
+    }
+  end
+
+  def stats_attributes
+    {
+      armorperlevel: champion[:stats][:armorperlevel],
+      hpperlevel: champion[:stats][:hpperlevel],
+      attackdamage: champion[:stats][:attackdamage],
+      mpperlevel: champion[:stats][:mpperlevel],
+      attackspeedoffset: champion[:stats][:attackspeedoffset],
+      armor: champion[:stats][:armor],
+      hp: champion[:stats][:hp],
+      hpregenperlevel: champion[:stats][:hpregenperlevel],
+      spellblock: champion[:stats][:spellblock],
+      attackrange: champion[:stats][:attackrange],
+      movespeed: champion[:stats][:movespeed],
+      attackdamageperlevel: champion[:stats][:attackdamageperlevel],
+      mpregenperlevel: champion[:stats][:mpregenperlevel],
+      mp: champion[:stats][:mp],
+      spellblockperlevel: champion[:stats][:spellblockperlevel],
+      crit: champion[:stats][:crit],
+      mpregen: champion[:stats][:mpregen],
+      attackspeedperlevel: champion[:stats][:attackspeedperlevel],
+      hpregen: champion[:stats][:hpregen],
+      critperlevel: champion[:stats][:critperlevel]
     }
   end
 end

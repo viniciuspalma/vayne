@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722034003) do
+ActiveRecord::Schema.define(version: 20170727033158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,33 @@ ActiveRecord::Schema.define(version: 20170722034003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["champion_id"], name: "index_spells_on_champion_id"
+  end
+
+  create_table "stats", force: :cascade do |t|
+    t.float "armorperlevel"
+    t.float "hpperlevel"
+    t.float "attackdamage"
+    t.float "mpperlevel"
+    t.float "attackspeedoffset"
+    t.float "armor"
+    t.float "hp"
+    t.float "hpregenperlevel"
+    t.float "spellblock"
+    t.float "attackrange"
+    t.float "movespeed"
+    t.float "attackdamageperlevel"
+    t.float "mpregenperlevel"
+    t.float "mp"
+    t.float "spellblockperlevel"
+    t.float "crit"
+    t.float "mpregen"
+    t.float "attackspeedperlevel"
+    t.float "hpregen"
+    t.float "critperlevel"
+    t.bigint "champion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["champion_id"], name: "index_stats_on_champion_id"
   end
 
 end

@@ -11,4 +11,8 @@ Types::ChampionType = GraphQL::ObjectType.define do
   field :tags,       types.String.to_list_type
   field :ally_tips,  types.String.to_list_type
   field :enemy_tips, types.String.to_list_type
+  field :stats, -> { Types::StatsType }
+  field :image, -> { Types::ImageType }
+  field :skins, -> { Types::SkinType.to_list_type }
+  #field :spells, -> { Types::SpellType.to_list_type }
 end
