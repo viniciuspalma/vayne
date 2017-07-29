@@ -1,0 +1,10 @@
+nguage: ruby
+rvm:
+  - 2.4.1
+script:
+  - bundle exec rspec --format doc
+after_success:
+  - '[ -d coverage ] && bundle exec codeclimate-test-reporter'
+env:
+  global:
+    - COVERAGE=true

@@ -31,6 +31,8 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter', platform: :mri, require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
