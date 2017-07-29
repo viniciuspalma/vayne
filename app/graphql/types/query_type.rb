@@ -9,7 +9,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :version, !types.String
 
     resolve ->(_, args, _) {
-      Champion.find_by(name: args[:name], version: args[:version])
+      Champion.find_by(name: args[:name].titlecase, version: args[:version])
     }
   end
 
