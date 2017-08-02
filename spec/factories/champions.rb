@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :champion do
     name { Faker::LeagueOfLegends.champion }
-    title { Faker::LeagueOfLegends.quote }
-    lore { Faker::LeagueOfLegends.masteries }
+    title { Faker::LeagueOfLegends.masteries }
+    lore { Faker::LeagueOfLegends.quote }
     partype 'Mana'
     tags ['Mage', 'Tank']
     ally_tips []
