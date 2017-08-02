@@ -1,28 +1,42 @@
 source 'https://rubygems.org'
 
-ruby '2.4.1'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
-gem 'bundler'
-gem 'dotenv'
+gem 'rails', '~> 5.1.2'
 
-gem 'sinatra'
-gem 'sinatra-cross_origin'
-gem 'puma'
-gem 'redis', '~>3.2'
+gem 'pg'
+gem 'puma', '~> 3.7'
+gem 'rack-cors', require: 'rack/cors'
 
-gem 'dry-types'
-gem 'dry-struct'
-
-gem 'graphql'
 gem 'httparty'
-gem 'multi_json'
+gem 'graphql'
 
 group :development, :test do
-  gem 'rack-test'
-  gem 'rspec'
-  gem 'rspec-graphql_matchers'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.5'
+  gem 'dotenv-rails'
+end
+
+group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', platform: :mri, require: false
+  gem 'vcr', require: false
+  gem 'webmock', require: false
 end
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'graphiql-rails', group: :development
