@@ -33,6 +33,8 @@ group :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', platform: :mri, require: false
+  gem 'vcr', require: false
+  gem 'webmock', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
