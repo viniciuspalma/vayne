@@ -11,9 +11,12 @@ require 'simplecov'
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 SimpleCov.start 'rails' do
-  add_filter do |source_file|
-    source_file.lines.count < 5
-  end
+  add_filter 'application_record'
+  add_filter 'application_mailer'
+  add_filter 'application_job'
+  add_filter 'application_controller'
+  add_filter 'application_cable/channel'
+  add_filter 'application_cable/connection'
 end
 
 Shoulda::Matchers.configure do |config|
