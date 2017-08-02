@@ -18,6 +18,8 @@ class ChampionFactory
       champion.stats = stats
 
       champion.save
+
+      champion
     end
   end
 
