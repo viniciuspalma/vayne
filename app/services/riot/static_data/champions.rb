@@ -9,10 +9,7 @@ module Riot
           version: version
         )
 
-        perform_request(
-          '/lol/static-data/v3/champions',
-          'static_data/champions/all'
-        )
+        perform_request('/lol/static-data/v3/champions')
       end
     end
   end

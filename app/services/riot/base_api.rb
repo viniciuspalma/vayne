@@ -14,7 +14,7 @@ module Riot
 
     attr_reader :query
 
-    def perform_request(endpoint, request_id)
+    def perform_request(endpoint)
       response = self.class.get(endpoint, options)
       json_parse_request(response)
     end
