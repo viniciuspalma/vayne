@@ -1,24 +1,5 @@
-# README
+[![Build Status](https://travis-ci.org/viniciuspalma/vayne.svg?branch=master)](https://travis-ci.org/viniciuspalma/vayne)
+[![CodeClimate](https://codeclimate.com/github/viniciuspalma/vayne.png)](https://codeclimate.com/github/viniciuspalma/vayne)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Vayne
+A GraphQL wrapper to League of Legends Champions's endpoint.
