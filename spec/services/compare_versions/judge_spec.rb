@@ -3,8 +3,8 @@ require 'rails_helper'
 describe CompareVersions::Judge do
   describe '.call' do
     context 'when the attributes are all equals' do
-      let(:spells) { [OpenStruct.new({ name: 'foo', effect: [[1, 2], [3, 4]] })] }
-      let(:stats) { OpenStruct.new({ difficulty: 1, attack: 1 }) }
+      let(:spells) { [OpenStruct.new({ name: 'foo', effects: [[1, 2], [3, 4]] })] }
+      let(:stats) { OpenStruct.new({ difficulty: 1, attack: 1, attributes: {difficulty: "", attack: ""} }) }
 
       let(:version) { OpenStruct.new({ stats: stats, spells: spells }) }
 
@@ -16,18 +16,18 @@ describe CompareVersions::Judge do
     context 'when the attributes are all buff' do
       let(:newer) do
         OpenStruct.new({
-          stats: OpenStruct.new({ difficulty: 2, attack: 2 }),
+          stats: OpenStruct.new({ difficulty: 2, attack: 2, attributes: {difficulty: "", attack: ""} }),
           spells: [
-            OpenStruct.new({ name: 'foo', effect: [[2, 3], [4, 5]] })
+            OpenStruct.new({ name: 'foo', effects: [[2, 3], [4, 5]] })
           ]
         })
       end
 
       let(:older) do
         OpenStruct.new({
-          stats: OpenStruct.new({ difficulty: 1, attack: 1 }),
+          stats: OpenStruct.new({ difficulty: 1, attack: 1, attributes: {difficulty: "", attack: ""} }),
           spells: [
-            OpenStruct.new({ name: 'foo', effect: [[1, 2], [3, 4]] })
+            OpenStruct.new({ name: 'foo', effects: [[1, 2], [3, 4]] })
           ]
         })
       end
@@ -40,18 +40,18 @@ describe CompareVersions::Judge do
     context 'when the attributes are all nerf' do
       let(:newer) do
         OpenStruct.new({
-          stats: OpenStruct.new({ difficulty: 1, attack: 1 }),
+          stats: OpenStruct.new({ difficulty: 1, attack: 1, attributes: {difficulty: "", attack: ""} }),
           spells: [
-            OpenStruct.new({ name: 'foo', effect: [[1, 2], [3, 4]] })
+            OpenStruct.new({ name: 'foo', effects: [[1, 2], [3, 4]] })
           ]
         })
       end
 
       let(:older) do
         OpenStruct.new({
-          stats: OpenStruct.new({ difficulty: 2, attack: 2 }),
+          stats: OpenStruct.new({ difficulty: 2, attack: 2, attributes: {difficulty: "", attack: ""} }),
           spells: [
-            OpenStruct.new({ name: 'foo', effect: [[2, 3], [4, 5]] })
+            OpenStruct.new({ name: 'foo', effects: [[2, 3], [4, 5]] })
           ]
         })
       end

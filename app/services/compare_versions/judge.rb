@@ -25,7 +25,7 @@ module CompareVersions
     end
 
     def compare_stats
-      CompareAttributes.new(attributes: newer.stats.to_h.keys, object: newer.stats)
+      CompareAttributes.new(attributes: newer.stats.attributes.keys, object: newer.stats)
         .compare(older.stats)
     end
 

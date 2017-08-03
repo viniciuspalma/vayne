@@ -4,9 +4,9 @@ FactoryGirl.define do
     name { Faker::LeagueOfLegends.masteries }
     description { Faker::LeagueOfLegends.masteries }
     tooltip { Faker::LeagueOfLegends.masteries }
-    effects { "[5.5, 5.5, 5.5], [5.5, 5.5, 5.5]]" }
-    cost { "[5.5, 5.5, 5.5], [5.5, 5.5, 5.5]]" }
-    range { "[5.5, 5.5, 5.5], [5.5, 5.5, 5.5]]" }
-    cooldown { "[5.5, 5.5, 5.5], [5.5, 5.5, 5.5]]" }
+    effects { [["5.5", "5.5", "5.5"], ["5.5", "5.5", "5.5"]] }
+    cost { [["5.5", "5.5", "5.5"], ["5.5", "5.5", "5.5"]] }
+    range { [["5.5", "5.5", "5.5"], ["5.5", "5.5", "5.5"]] }
+    cooldown { [["5.5", "5.5", "5.5"], ["5.5", "5.5", "5.5"]] }
   end
 end

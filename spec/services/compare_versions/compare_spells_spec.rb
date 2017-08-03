@@ -3,8 +3,8 @@ require 'rails_helper'
 describe CompareVersions::CompareSpells do
   describe '.call' do
     context 'when the spells of the new version are buffed' do
-      let(:new_spells) { [OpenStruct.new({name: 'foo', effect: [nil, [2]] })] }
-      let(:old_spells) { [OpenStruct.new({name: 'foo', effect: [nil, [1]] })] }
+      let(:new_spells) { [OpenStruct.new({name: 'foo', effects: [nil, [2]] })] }
+      let(:old_spells) { [OpenStruct.new({name: 'foo', effects: [nil, [1]] })] }
 
       it 'returns spell name' do
         expect(
@@ -20,8 +20,8 @@ describe CompareVersions::CompareSpells do
     end
 
     context 'when the spells of the new version are nerfed' do
-      let(:new_spells) { [OpenStruct.new({name: 'foo', effect: [nil, [1]] })] }
-      let(:old_spells) { [OpenStruct.new({name: 'foo', effect: [nil, [2]] })] }
+      let(:new_spells) { [OpenStruct.new({name: 'foo', effects: [nil, [1]] })] }
+      let(:old_spells) { [OpenStruct.new({name: 'foo', effects: [nil, [2]] })] }
 
       it 'returns spell name' do
         expect(
@@ -37,8 +37,8 @@ describe CompareVersions::CompareSpells do
     end
 
     context 'when the spells of the new version is equal of another version' do
-      let(:new_spells) { [OpenStruct.new({name: 'foo', effect: [nil, [1]] })] }
-      let(:old_spells) { [OpenStruct.new({name: 'foo', effect: [nil, [1]] })] }
+      let(:new_spells) { [OpenStruct.new({name: 'foo', effects: [nil, [1]] })] }
+      let(:old_spells) { [OpenStruct.new({name: 'foo', effects: [nil, [1]] })] }
 
       it 'returns spell name' do
         expect(
