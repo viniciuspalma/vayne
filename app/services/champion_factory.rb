@@ -10,16 +10,17 @@ class ChampionFactory
 
   def build_champion
     ActiveRecord::Base.transaction do
-      champion = Champion.create(champion_attributes)
+      build_champion = Champion.find_or_create_by(version: version, api_id: champion[:id])
+      build_champion.update_attributes(champion_attributes)
 
-      champion.skins = skins
-      champion.spells = spells
-      champion.image = image
-      champion.stats = stats
+      build_champion.skins = skins
+      build_champion.spells = spells
+      build_champion.image = image
+      build_champion.stats = stats
 
-      champion.save
+      build_champion.save
 
-      champion
+      build_champion
     end
   end
 

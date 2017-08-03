@@ -25,6 +25,8 @@ class PopulateChampions
 
   def versions_champions
     season_versions.map do |version|
+      puts %Q{ ›› "populate champions from version: "#{version}"" }
+
       {
         champions: Riot::StaticData::Champions.new.call(version: version)[:data],
         version: version
@@ -35,7 +37,7 @@ class PopulateChampions
   def season_versions
     versions.select do |version|
       version[0] == season.to_s
-    end.first(2)
+    end
   end
 
   def versions
