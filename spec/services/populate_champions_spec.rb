@@ -6,8 +6,7 @@ describe PopulateChampions do
       champions_mock = double(Riot::StaticData::Champions)
       allow(Riot::StaticData::Champions).to receive(:new).and_return(champions_mock)
     end
-
-    let(:versions_api) { Riot::StaticData::Versions }
+    
     let(:champions_api) { Riot::StaticData::Champions }
     let(:champion) { create :champion, version: '1.1.1', api_id: '67' }
 
