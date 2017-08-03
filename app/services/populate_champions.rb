@@ -1,44 +1,23 @@
 class PopulateChampions
-  def self.call(season:)
-    new(season).populate
+  def self.call(version:)
+    new(version).populate
   end
 
-  def initialize(season)
-    @season = season
+  def initialize(version)
+    @version = version
   end
 
   def populate
-    versions_champions.map do |version_champions|
-      create_champions(version_champions[:champions], version_champions[:version])
-    end
-  end
-
-  private
-
-  attr_reader :season
-
-  def create_champions(champions, version)
     champions.map do |_, champion|
       ChampionFactory.(champion: champion, version: version)
     end
   end
 
-  def versions_champions
-    season_versions.map do |version|
-      {
-        champions: Riot::StaticData::Champions.new.call(version: version)[:data],
-        version: version
-      }
-    end
-  end
+  private
 
-  def season_versions
-    versions.select do |version|
-      version[0] == season.to_s
-    end.first(2)
-  end
+  attr_reader :version
 
-  def versions
-    Riot::StaticData::Versions.new.call
+  def champions
+    Riot::StaticData::Champions.new.call(version: version)[:data]
   end
 end
