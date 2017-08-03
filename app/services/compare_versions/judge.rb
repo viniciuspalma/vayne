@@ -10,7 +10,10 @@ module CompareVersions
     end
 
     def adjudicate
-      InvestigateEvidences.(evidences: evidences)
+      {
+        status: InvestigateEvidences.(evidences: evidences),
+        evidences: evidences
+      }
     end
 
     private
@@ -25,12 +28,16 @@ module CompareVersions
     end
 
     def compare_stats
-      CompareAttributes.new(attributes: newer.stats.attributes.keys, object: newer.stats)
+      CompareAttributes.new(attributes: attributes, object: newer.stats)
         .compare(older.stats)
     end
 
     def compare_spells
       CompareSpells.(new_spells: newer.spells, old_spells: older.spells)
+    end
+
+    def attributes
+      newer.stats.attributes.keys - ['id', 'champion_id', 'updated_at', 'created_at']
     end
   end
 end

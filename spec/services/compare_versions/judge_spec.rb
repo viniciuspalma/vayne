@@ -9,7 +9,7 @@ describe CompareVersions::Judge do
       let(:version) { OpenStruct.new({ stats: stats, spells: spells }) }
 
       it 'returns no_changes status' do
-        expect(described_class.(newer: version, older: version)).to eq(:no_changes)
+        expect(described_class.(newer: version, older: version)[:status]).to eq(:no_changes)
       end
     end
 
@@ -33,7 +33,7 @@ describe CompareVersions::Judge do
       end
 
       it 'returns no_changes status' do
-        expect(described_class.(newer: newer, older: older)).to eq(:buff)
+        expect(described_class.(newer: newer, older: older)[:status]).to eq(:buff)
       end
     end
 
@@ -57,7 +57,7 @@ describe CompareVersions::Judge do
       end
 
       it 'returns no_changes status' do
-        expect(described_class.(newer: newer, older: older)).to eq(:nerf)
+        expect(described_class.(newer: newer, older: older)[:status]).to eq(:nerf)
       end
     end
   end
