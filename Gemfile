@@ -24,13 +24,14 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'graphiql-rails'
 end
 
 group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
   gem 'database_cleaner'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', platform: :mri, require: false
   gem 'vcr', require: false
@@ -38,5 +39,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'graphiql-rails', group: :development
