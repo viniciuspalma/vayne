@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe 'GraphQL Query: FindChampions', type: :request do
-  describe 'FindChampions' do
+RSpec.describe 'GraphQL Query: champions', type: :request do
+  describe 'champions' do
     let!(:champions) { create_list :champion, 2, version: '1.1.1' }
 
     context 'return all champions created' do
       before do
         post '/graphql', params: {
-          query: %| { FindChampions(version: "1.1.1") { name } } |,
+          query: %| { champions(version: "1.1.1") { name } } |,
         }
       end
 
@@ -16,7 +16,7 @@ RSpec.describe 'GraphQL Query: FindChampions', type: :request do
       end
 
       it 'returns all champions created' do
-        expect(JSON.parse(response.body)['data']['FindChampions'].size).to eq(2)
+        expect(JSON.parse(response.body)['data']['champions'].size).to eq(2)
       end
     end
   end
