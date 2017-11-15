@@ -14,8 +14,11 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'httparty'
 gem 'graphql'
 
+gem 'dry-types'
+gem 'dry-struct'
+
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'dotenv-rails'
 end
