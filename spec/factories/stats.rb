@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :stats do
     armorperlevel { Faker::Number.positive }
     hpperlevel { Faker::Number.positive }
