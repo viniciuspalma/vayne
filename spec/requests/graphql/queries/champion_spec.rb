@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'GraphQL Query: champion', type: :request do
+describe 'GraphQL Query: champion', type: :request do
   describe 'champion' do
     let!(:champions) { create_list :champion, 2, version: '1.1.1' }
 
