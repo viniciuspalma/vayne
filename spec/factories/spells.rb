@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :spell do
     max_rank 5
     name { Faker::LeagueOfLegends.masteries }

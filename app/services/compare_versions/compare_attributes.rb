@@ -20,12 +20,21 @@ module CompareVersions
     end
 
     def verify_attribute(attribute, compare_object)
-      if object[attribute] == compare_object[attribute]
-        { attribute: attribute, status: :no_changes }
-      elsif object[attribute] > compare_object[attribute]
-        { attribute: attribute, status: :buff }
-      elsif object[attribute] < compare_object[attribute]
-        { attribute: attribute, status: :nerf }
+      actual = object[attribute]
+      previous = compare_object[attribute]
+
+      payload = {
+        actual: actual,
+        previous: previous,
+        attribute: attribute
+      }
+
+      if actual == previous
+        payload.merge({ status: :no_changes })
+      elsif actual > previous
+        payload.merge({ status: :buff })
+      elsif actual < previous
+        payload.merge({ status: :nerf })
       end
     end
   end

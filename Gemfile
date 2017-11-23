@@ -14,8 +14,11 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'httparty'
 gem 'graphql'
 
+gem 'dry-types'
+gem 'dry-struct'
+
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
   gem 'dotenv-rails'
 end
@@ -28,7 +31,7 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 3.1'

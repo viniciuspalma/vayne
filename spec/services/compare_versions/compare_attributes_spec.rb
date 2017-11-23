@@ -14,7 +14,7 @@ describe CompareVersions::CompareAttributes do
 
       it 'returns attributes buffed' do
         expect(subject.compare(object_compared)).to(
-          eq([{ attribute: :hp, status: :no_changes }]))
+          eq([{ actual: 1000, previous: 1000, attribute: :hp, status: :no_changes }]))
       end
     end
 
@@ -30,7 +30,7 @@ describe CompareVersions::CompareAttributes do
 
       it 'returns attributes buffed' do
         expect(subject.compare(object_compared)).to(
-          eq([{ attribute: :hp, status: :buff }]))
+          eq([{ actual: 1000, previous: 900, attribute: :hp, status: :buff }]))
       end
     end
 
@@ -46,7 +46,7 @@ describe CompareVersions::CompareAttributes do
 
       it 'returns attributes buffed' do
         expect(subject.compare(object_compared)).to(
-          eq([{ attribute: :hp, status: :nerf }]))
+          eq([{ actual: 1000, previous: 1100, attribute: :hp, status: :nerf }]))
       end
     end
 
@@ -63,9 +63,9 @@ describe CompareVersions::CompareAttributes do
       it 'returns attributes and correct status' do
         expect(subject.compare(object_compared)).to(
           eq([
-            { attribute: :hp, status: :buff },
-            { attribute: :mp, status: :nerf },
-            { attribute: :armor, status: :no_changes }
+            { actual: 1000, previous: 900, attribute: :hp, status: :buff },
+            { actual: 1000, previous: 1100, attribute: :mp, status: :nerf },
+            { actual: 200, previous: 200, attribute: :armor, status: :no_changes }
           ]))
       end
     end

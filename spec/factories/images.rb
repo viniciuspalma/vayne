@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :image do
     full { "#{Faker::LeagueOfLegends.champion}.jpg" }
     group { "#{Faker::LeagueOfLegends.champion}.jpg" }

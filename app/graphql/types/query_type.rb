@@ -1,7 +1,7 @@
 Types::QueryType = GraphQL::ObjectType.define do
   name "Query"
 
-  field :FindChampion do
+  field :champion do
     description "Query to find a champion by your id and version number"
     type Types::ChampionType
 
@@ -13,7 +13,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     }
   end
 
-  field :FindChampions, types[Types::ChampionType] do
+  field :champions, types[Types::ChampionType] do
     description "Query to all champions from a version"
 
     argument :name, types.String
@@ -25,14 +25,6 @@ Types::QueryType = GraphQL::ObjectType.define do
       else
         Champion.where(name: args[:name], version: args[:version])
       end
-    }
-  end
-
-  field :AllChampions, types[Types::ChampionType] do
-    description "Query to all champions"
-
-    resolve -> (_, _, _) {
-      Champion.all
     }
   end
 end
