@@ -12,7 +12,7 @@ module CompareVersions
     def compare
       new_spells.zip(old_spells).map do |new_spell, old_spell|
         compare_effect(new_spell, old_spell)
-      end.flatten
+      end
     end
 
     private
@@ -23,24 +23,34 @@ module CompareVersions
       new_effect = normalize_effect(new_spell.effects)
       old_effect = normalize_effect(old_spell.effects)
 
-      new_effect.zip(old_effect).map do |new_effect_item, old_effect_item|
-        return { spell: new_spell.name, status: :new } if old_effect_item.nil? || new_effect_item.nil?
+      status = new_effect.zip(old_effect).map do |new_effect_item, old_effect_item|
+        return { status: :new, actual: 0.0, previous: 0.0 } if old_effect_item.nil? || new_effect_item.nil?
 
-        status_compare(new_effect_item, old_effect_item, new_spell.name)
+        status_compare(new_effect_item, old_effect_item)
       end
+
+      {
+        spell: new_spell.name,
+        effects: status
+      }
     end
 
-    def status_compare(new_effect_item, old_effect_item, name)
+    def status_compare(new_effect_item, old_effect_item)
       new_effect_item.zip(old_effect_item).map do |new_value, old_value|
-        parsed_new_value = new_value.to_f
-        parsed_old_value = old_value.to_f
+        actual = new_value.to_f
+        previous = old_value.to_f
 
-        if parsed_new_value > parsed_old_value
-          { spell: name, status: :buff }
-        elsif parsed_new_value < parsed_old_value
-          { spell: name, status: :nerf }
-        elsif parsed_new_value == parsed_old_value
-          { spell: name, status: :no_changes }
+        payload = {
+          actual: actual,
+          previous: previous
+        }
+
+        if actual > previous
+          payload.merge({ status: :buff })
+        elsif actual < previous
+          payload.merge({ status: :nerf })
+        elsif actual == previous
+          payload.merge({ status: :no_changes })
         end
       end
     end

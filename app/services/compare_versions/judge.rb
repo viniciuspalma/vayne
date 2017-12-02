@@ -21,6 +21,7 @@ module CompareVersions
     attr_accessor :newer, :older
 
     def evidences
+      binding.pry
       [
         compare_stats,
         compare_spells
