@@ -23,7 +23,7 @@ module CompareVersions
       new_effect = normalize_effect(new_spell.effects)
       old_effect = normalize_effect(old_spell.effects)
 
-      status = new_effect.zip(old_effect).map do |new_effect_item, old_effect_item|
+      effects = new_effect.zip(old_effect).map do |new_effect_item, old_effect_item|
         return { status: :new, actual: 0.0, previous: 0.0 } if old_effect_item.nil? || new_effect_item.nil?
 
         status_compare(new_effect_item, old_effect_item)
@@ -31,7 +31,9 @@ module CompareVersions
 
       {
         spell: new_spell.name,
-        effects: status
+        description: new_spell.description,
+        tooltip: new_spell.tooltip,
+        effects: effects
       }
     end
 

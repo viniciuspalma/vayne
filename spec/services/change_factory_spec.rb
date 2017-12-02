@@ -17,11 +17,13 @@ describe ChangeFactory do
             description: 'foo',
             tooltip: 'bar',
             effects: [
-              {
-                status: :buff,
-                actual: 200.00,
-                previous: 100.00
-              }
+              [
+                {
+                  status: :buff,
+                  actual: 200.00,
+                  previous: 100.00
+                }
+              ]
             ]
           }
         ]
@@ -39,6 +41,10 @@ describe ChangeFactory do
 
       it 'returns a correct size of stat evidences' do
         expect(described_class.(change: change).stats_evidences.size).to eq(1)
+      end
+
+      it 'returns a correct size of spell evidences' do
+        expect(described_class.(change: change).spell_evidences.size).to eq(1)
       end
     end
   end

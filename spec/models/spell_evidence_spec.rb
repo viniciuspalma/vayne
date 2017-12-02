@@ -45,13 +45,13 @@ describe SpellEvidence do
           spell: 'Final hour',
           description: 'foo',
           tooltip: 'bar',
-          effects: [effects]
+          effects: [[effects]]
         )
       end
 
       describe 'create a new spell_evidence' do
         it 'returns the effects passed as parameter' do
-          expect(spell_evidence.effects).to eq([effects])
+          expect(spell_evidence.effects).to eq([[effects]])
         end
       end
     end

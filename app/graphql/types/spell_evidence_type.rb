@@ -4,5 +4,5 @@ Types::SpellEvidenceType = GraphQL::ObjectType.define do
   field :spell,       types.String
   field :description, types.String
   field :tooltip,     types.String
-  field :effects,  -> { Types::SpellEffectType.to_list_type }
+  field :effects,     types[Types::SpellEffectType.to_list_type]
 end
