@@ -1,8 +1,8 @@
 Types::SpellEvidenceType = GraphQL::ObjectType.define do
-  name 'Stats Evidence'
+  name 'Spell Evidence'
 
-  field :status,    types.String
-  field :name,      types.String
-  field :actual,    types.Float
-  field :previous,  types.Float
+  field :spell,       types.String
+  field :description, types.String
+  field :tooltip,     types.String
+  field :effects,  -> { Types::SpellEffectType.to_list_type }
 end

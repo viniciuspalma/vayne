@@ -10,7 +10,19 @@ describe ChangeFactory do
             attribute: 'hp',
             status: :buff,
             actual: 200.00,
-            previous: 100.00,
+            previous: 100.00
+          },
+          {
+            spell: 'Final hour',
+            description: 'foo',
+            tooltip: 'bar',
+            effects: [
+              {
+                status: :buff,
+                actual: 200.00,
+                previous: 100.00
+              }
+            ]
           }
         ]
       }

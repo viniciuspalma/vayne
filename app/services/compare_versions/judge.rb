@@ -21,7 +21,6 @@ module CompareVersions
     attr_accessor :newer, :older
 
     def evidences
-      binding.pry
       [
         compare_stats,
         compare_spells
@@ -34,7 +33,9 @@ module CompareVersions
     end
 
     def compare_spells
-      CompareSpells.(new_spells: newer.spells, old_spells: older.spells)
+      compared_spells = CompareSpells.(new_spells: newer.spells, old_spells: older.spells)
+
+      compared_spells.map { |compared_spell| compared_spell[:effects] }.flatten
     end
 
     def attributes

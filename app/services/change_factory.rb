@@ -10,7 +10,8 @@ class ChangeFactory
   def build_change
     Change[
       status: change[:status],
-      stats_evidences: stats_evidences_attributes
+      stats_evidences: collect_evidences_by_type(:attribute),
+      spell_evidences: collect_evidences_by_type(:spell)
     ]
   end
 
@@ -18,7 +19,9 @@ class ChangeFactory
 
   attr_reader :change
 
-  def stats_evidences_attributes
-    change[:evidences].select { |evidence| evidence[:attribute] }
+  def collect_evidences_by_type(type)
+    change[:evidences].select do |evidence|
+      evidence[type]
+    end
   end
 end

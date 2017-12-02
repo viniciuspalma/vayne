@@ -23,15 +23,15 @@ describe CompareVersions::CompareSpells do
       end
 
       it 'returns buff for all effects' do
-        expect(actual[0][:effects].map { |e| e[:status] }).to all(be :buff)
+        expect(actual[0][:effects][0].map { |e| e[:status] }).to all(be :buff)
       end
 
       it 'returns actual for all effects' do
-        expect(actual[0][:effects].map { |e| e[:actual] }).to all(be 5.5)
+        expect(actual[0][:effects][0].map { |e| e[:actual] }).to all(be 5.5)
       end
 
       it 'returns previous for all effects' do
-        expect(actual[0][:effects].map { |e| e[:previous] }).to all(be 4.5)
+        expect(actual[0][:effects][0].map { |e| e[:previous] }).to all(be 4.5)
       end
     end
 
@@ -56,15 +56,15 @@ describe CompareVersions::CompareSpells do
       end
 
       it 'returns buff for all effects' do
-        expect(actual[0][:effects].map { |e| e[:status] }).to all(be :nerf)
+        expect(actual[0][:effects][0].map { |e| e[:status] }).to all(be :nerf)
       end
 
       it 'returns actual for all effects' do
-        expect(actual[0][:effects].map { |e| e[:actual] }).to all(be 4.5)
+        expect(actual[0][:effects][0].map { |e| e[:actual] }).to all(be 4.5)
       end
 
       it 'returns previous for all effects' do
-        expect(actual[0][:effects].map { |e| e[:previous] }).to all(be 5.5)
+        expect(actual[0][:effects][0].map { |e| e[:previous] }).to all(be 5.5)
       end
     end
 
@@ -89,15 +89,15 @@ describe CompareVersions::CompareSpells do
       end
 
       it 'returns buff for all effects' do
-        expect(actual[0][:effects].map { |e| e[:status] }).to all(be :no_changes)
+        expect(actual[0][:effects][0].map { |e| e[:status] }).to all(be :no_changes)
       end
 
       it 'returns actual for all effects' do
-        expect(actual[0][:effects].map { |e| e[:actual] }).to all(be 5.5)
+        expect(actual[0][:effects][0].map { |e| e[:actual] }).to all(be 5.5)
       end
 
       it 'returns previous for all effects' do
-        expect(actual[0][:effects].map { |e| e[:previous] }).to all(be 5.5)
+        expect(actual[0][:effects][0].map { |e| e[:previous] }).to all(be 5.5)
       end
     end
   end
