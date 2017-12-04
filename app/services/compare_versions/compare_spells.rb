@@ -39,21 +39,13 @@ module CompareVersions
 
     def status_compare(new_effect_item, old_effect_item)
       new_effect_item.zip(old_effect_item).map do |new_value, old_value|
-        actual = new_value.to_f
-        previous = old_value.to_f
+        status = AnalyzeStatus.(actual: new_value.to_f, previous: old_value.to_f)
 
-        payload = {
-          actual: actual,
-          previous: previous
+        {
+          status: status,
+          actual: new_value.to_f,
+          previous: old_value.to_f
         }
-
-        if actual > previous
-          payload.merge({ status: :buff })
-        elsif actual < previous
-          payload.merge({ status: :nerf })
-        elsif actual == previous
-          payload.merge({ status: :no_changes })
-        end
       end
     end
 
