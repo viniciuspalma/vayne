@@ -6,7 +6,8 @@ describe Change do
       let(:change) do
         Change.new(
           status: :buff,
-          stats_evidences: []
+          stats_evidences: [],
+          spell_evidences: []
         )
       end
 
@@ -17,7 +18,7 @@ describe Change do
       end
     end
 
-    context 'when passed stats_evidences as parameter' do
+    context 'when passed stats_evidences and spell_evidences as parameter' do
       let(:stats_evidences) do
         StatsEvidence.new(
           status: :buff,
@@ -26,11 +27,31 @@ describe Change do
           previous: 1.0
         )
       end
-      let(:change) { Change.new(status: :buff, stats_evidences: [stats_evidences]) }
+
+      let(:spell_evidences) do
+        SpellEvidence.new(
+          spell: 'Final hour',
+          description: 'foo',
+          tooltip: 'bar',
+          effects: []
+        )
+      end
+
+      let(:change) do
+        Change.new(
+          status: :buff,
+          stats_evidences: [stats_evidences],
+          spell_evidences: [spell_evidences]
+        )
+      end
 
       describe 'create a new change' do
         it 'returns the stats_evidences passed as parameter' do
           expect(change.stats_evidences).to eq([stats_evidences])
+        end
+
+        it 'returns the spell_evidences passed as parameter' do
+          expect(change.spell_evidences).to eq([spell_evidences])
         end
       end
     end

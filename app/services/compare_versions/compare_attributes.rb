@@ -20,22 +20,14 @@ module CompareVersions
     end
 
     def verify_attribute(attribute, compare_object)
-      actual = object[attribute]
-      previous = compare_object[attribute]
+      status = AnalyzeStatus.(actual: object[attribute], previous: compare_object[attribute])
 
-      payload = {
-        actual: actual,
-        previous: previous,
-        attribute: attribute
+      {
+        actual: object[attribute],
+        previous: compare_object[attribute],
+        attribute: attribute,
+        status: status
       }
-
-      if actual == previous
-        payload.merge({ status: :no_changes })
-      elsif actual > previous
-        payload.merge({ status: :buff })
-      elsif actual < previous
-        payload.merge({ status: :nerf })
-      end
     end
   end
 end

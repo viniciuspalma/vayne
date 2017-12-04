@@ -12,4 +12,10 @@ describe Types::ChangeType do
       expect(described_class.fields['stats_evidences'].type.to_s).to eq('[Stats Evidence]')
     end
   end
+
+  describe 'spell_evidences field' do
+    it 'returns SpellEvidenceType type' do
+      expect(described_class.fields['spell_evidences'].type.to_s).to eq('[Spell Evidence]')
+    end
+  end
 end

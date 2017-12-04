@@ -11,7 +11,7 @@ module CompareVersions
 
     def adjudicate
       {
-        status: InvestigateEvidences.(evidences: evidences),
+        status: InvestigateEvidences.(evidences: evidences_status),
         evidences: evidences
       }
     end
@@ -24,6 +24,13 @@ module CompareVersions
       [
         compare_stats,
         compare_spells
+      ].flatten
+    end
+
+    def evidences_status
+      [
+        compare_stats,
+        compare_spells.map { |compared_spell| compared_spell[:effects] }.flatten
       ].flatten
     end
 
