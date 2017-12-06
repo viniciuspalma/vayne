@@ -100,5 +100,38 @@ describe CompareVersions::CompareSpells do
         expect(actual[0][:effects][0].map { |e| e[:previous] }).to all(be 5.5)
       end
     end
+
+    context 'when the spells of the new version don\'t appear on previous version' do
+      let(:new_spells) do
+        [
+          build(:spell, effects: [["5.5", "5.5", "5.5"]]),
+          build(:spell, effects: [["5.5", "5.5", "5.5"]])
+        ]
+      end
+      let(:old_spells) do
+        [
+          build(:spell, effects: []),
+          build(:spell, effects: [])
+        ]
+      end
+
+      let(:actual) { described_class.(new_spells: new_spells, old_spells: old_spells) }
+
+      it 'returns spells spell' do
+        expect(actual[0][:spell]).to eq new_spells[0].name
+      end
+
+      it 'returns buff for all effects' do
+        expect(actual[0][:effects][0].map { |e| e[:status] }).to all(be :new)
+      end
+
+      it 'returns actual for all effects' do
+        expect(actual[0][:effects][0].map { |e| e[:actual] }).to all(be 5.5)
+      end
+
+      it 'returns previous for all effects' do
+        expect(actual[0][:effects][0].map { |e| e[:previous] }).to all(be 0.0)
+      end
+    end
   end
 end

@@ -19,22 +19,38 @@ module CompareVersions
 
     attr_accessor :new_spells, :old_spells
 
-    def compare_effect(new_spell, old_spell)
-      new_effect = normalize_effect(new_spell.effects)
-      old_effect = normalize_effect(old_spell.effects)
-
-      effects = new_effect.zip(old_effect).map do |new_effect_item, old_effect_item|
-        return { status: :new, actual: 0.0, previous: 0.0 } if old_effect_item.nil? || new_effect_item.nil?
-
-        status_compare(new_effect_item, old_effect_item)
+    def effects(new_effect, old_effect)
+      new_effect.zip(old_effect).map do |new_effect_item, old_effect_item|
+        if old_effect_item.nil?
+          status_compare_new_item(new_effect_item)
+        else
+          status_compare(new_effect_item, old_effect_item)
+        end
       end
+    end
+
+    def compare_effect(new_spell, old_spell)
+      effects_result = effects(
+        normalize_effect(new_spell.effects),
+        normalize_effect(old_spell.effects)
+      )
 
       {
         spell: new_spell.name,
         description: new_spell.description,
         tooltip: new_spell.tooltip,
-        effects: effects
+        effects: effects_result
       }
+    end
+
+    def status_compare_new_item(new_effect_item)
+      new_effect_item.map do |new_value|
+        {
+          status: :new,
+          actual: new_value.to_f,
+          previous: 0.0
+        }
+      end
     end
 
     def status_compare(new_effect_item, old_effect_item)
