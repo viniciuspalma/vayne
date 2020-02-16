@@ -21,7 +21,7 @@ describe Types::SpellEvidenceType do
 
   describe 'effects field' do
     it 'returns SpellEffectType type' do
-      expect(described_class.fields['effects'].type.to_s).to eq('[[Spell Effect]]')
+      expect(described_class.fields['effects'].type.to_s).to eq('[[SpellEffect]]')
     end
   end
 end

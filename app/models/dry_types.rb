@@ -1,3 +1,3 @@
 module DryTypes
-  include Dry::Types.module
+  include Dry::Types()
 end

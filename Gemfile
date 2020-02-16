@@ -8,7 +8,7 @@ end
 gem 'rails', '6.0.2'
 
 gem 'pg'
-gem 'puma', '~> 3.7'
+gem 'puma'
 gem 'rack-cors', require: 'rack/cors'
 
 gem 'httparty'
@@ -24,9 +24,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen',
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen',
+  gem 'spring-watcher-listen'
   gem 'graphiql-rails'
 end
 
@@ -34,7 +34,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'database_cleaner'
-  gem 'shoulda-matchers',
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', platform: :mri, require: false
   gem 'vcr', require: false

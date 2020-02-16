@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :champion do
-    name { Faker::LeagueOfLegends.champion }
-    title { Faker::LeagueOfLegends.masteries }
-    lore { Faker::LeagueOfLegends.quote }
-    partype 'Mana'
-    tags ['Mage', 'Tank']
-    ally_tips []
-    enemy_tips []
+    name { Faker::Games::LeagueOfLegends.champion }
+    title { Faker::Games::LeagueOfLegends.masteries }
+    lore { Faker::Games::LeagueOfLegends.quote }
+    partype { 'Mana' }
+    tags { ['Mage', 'Tank'] }
+    ally_tips { [] }
+    enemy_tips { [] }
     association :stats, factory: :stats, strategy: :build
   end
 end

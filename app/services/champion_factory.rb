@@ -20,7 +20,7 @@ class ChampionFactory
         created_champion.stats = stats
       end
 
-      build_champion.update_attributes(champion_attributes)
+      build_champion.update(champion_attributes)
       build_champion
     end
   end

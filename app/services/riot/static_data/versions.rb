@@ -1,6 +1,6 @@
 module Riot
   module StaticData
-    class Versions < Riot::BaseAPI
+    class Versions < Riot::BaseApi
       def call()
         perform_request('/lol/static-data/v3/versions')
       end

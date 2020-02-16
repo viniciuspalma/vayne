@@ -1,5 +1,5 @@
 module Riot
-  class BaseAPI
+  class BaseApi
     include HTTParty
 
     base_uri 'https://br1.api.riotgames.com'

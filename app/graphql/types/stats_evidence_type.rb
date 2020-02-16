@@ -1,5 +1,5 @@
 Types::StatsEvidenceType = GraphQL::ObjectType.define do
-  name 'Stats Evidence'
+  name 'StatsEvidence'
 
   field :status,    types.String
   field :attribute, types.String

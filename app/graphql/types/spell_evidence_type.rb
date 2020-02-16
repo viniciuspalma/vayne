@@ -1,5 +1,5 @@
 Types::SpellEvidenceType = GraphQL::ObjectType.define do
-  name 'Spell Evidence'
+  name 'SpellEvidence'
 
   field :spell,       types.String
   field :description, types.String

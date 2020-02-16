@@ -1,6 +1,6 @@
 module Riot
   module StaticData
-    class Champions < Riot::BaseAPI
+    class Champions < Riot::BaseApi
       def call(version:)
         query.merge!(
           locale: 'en_US',

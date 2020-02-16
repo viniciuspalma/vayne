@@ -1,5 +1,5 @@
 Types::SpellEffectType = GraphQL::ObjectType.define do
-  name 'Spell Effect'
+  name 'SpellEffect'
 
   field :status,   types.String
   field :actual,   types.Float
