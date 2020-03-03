@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.4.1
+  - 2.7.0
 cache: bundler
 before_install: cp config/database.yml.example config/database.yml
 script:
