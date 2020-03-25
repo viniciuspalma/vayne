@@ -2,7 +2,7 @@ module Riot
   class BaseApi
     include HTTParty
 
-    base_uri 'https://br1.api.riotgames.com'
+    base_uri 'https://ddragon.leagueoflegends.com/' 
     disable_rails_query_string_format
 
     def initialize(query: {}, options: {})
@@ -36,9 +36,7 @@ module Riot
     end
 
     def default_query
-      {
-        api_key: ENV['RIOT_API_KEY']
-      }
+      {}
     end
   end
 end
