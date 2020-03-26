@@ -8,8 +8,11 @@ class PopulateChampions
   end
 
   def populate
-    champions.map do |_, champion|
-      ChampionFactory.(champion: champion, version: version)
+    champions.map do |_, champ|
+      ChampionFactory.(
+        champion: champion(champ[:id]),
+        version: version
+      )
     end
   end
 
@@ -19,5 +22,9 @@ class PopulateChampions
 
   def champions
     Riot::StaticData::Champions.new.call(version: version)[:data]
+  end
+
+  def champion(id)
+    Riot::StaticData::Champion.new.call(id: id, version: version)
   end
 end
