@@ -2,22 +2,27 @@ require 'rails_helper'
 
 describe PopulateChampions do
   describe '.call' do
-    before do
-      champions_mock = double(Riot::StaticData::Champions)
-      allow(Riot::StaticData::Champions).to receive(:new).and_return(champions_mock)
-    end
-    
     let(:champions_api) { Riot::StaticData::Champions }
-    let(:champion) { create :champion, version: '1.1.1', api_id: '67' }
+    let(:champion_api) { Riot::StaticData::Champion }
+    let(:champion) { create :champion, version: '1.1.1', api_id: 'Vayne' }
 
     it 'return champions created for each version' do
       allow(ChampionFactory).to receive(:call).and_return(champion)
 
       allow(champions_api).to receive_message_chain('new.call').and_return({
         data: {
-          "67": {
+          "Vayne": {
             name: 'Vayne',
-            id: '67'
+            id: 'Vayne'
+          }
+        }
+      })
+
+      allow(champion_api).to receive_message_chain('new.call').and_return({
+        data: {
+          "Vayne": {
+            name: 'Vayne',
+            id: 'Vayne'
           }
         }
       })
